@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from .models import Topico, Conteudo, Conversor
 from .forms import TopicoForm, ConteudoForm, ConversorForm
-from .funcoes import calculateNyquist, conversor
+from .funcoes import calculateNyquist, calculateShannon, conversor, qam
 
 # Create your views here.
 def index_view(request):
@@ -49,7 +49,7 @@ def shannon_view(request):
     if request.method == "POST":
         b = request.POST['b']
         snr = request.POST['snr']
-        resultado = calculateNyquist(b, snr)
+        resultado = calculateShannon(b, snr)
     context = {
         'resultado': resultado
     }
@@ -130,3 +130,23 @@ def meios_view(request):
 
 def sinais_view(request):
     return render(request, 'core/sinais.html')
+
+def mpsk_view(request):
+    
+
+    return render(request, 'core/mpsk.html')
+
+def mqam_view(request):
+    resultado = "Resultado"
+    if request.method == "POST":
+        b = request.POST['b']
+        db = request.POST['db']
+        ber = request.POST['ber']
+        resultado = qam(b, db, ber)
+    context = {
+        'resultado': resultado
+    }
+    return render(request, 'core/mqam.html', context)
+
+def modulacoes_view(request):
+    return render(request, 'core/modulacoes.html')

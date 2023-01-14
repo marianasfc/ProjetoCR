@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 
+
 <head>
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -39,7 +40,7 @@
         color: black;
     }
 
-    .S {
+    .c {
         width: 100%;
         padding: 15px;
         background: #f0f0f5;
@@ -52,10 +53,11 @@
         margin-left: 10px;
     }
 
-    .shannon {
+    .mqam {
         margin-top: 60px;
         margin-right: 10px;
         color: white;
+        font-size: 20px;
     }
 
     .formula {
@@ -115,28 +117,69 @@
 
 <div>
     <div class="left">
-        <div class="shannon">
-            <h1>Capacidade de Shannon</h1>
-            <p>A capacidade de Shannon é o limite teórico máximo de taxa de transmissão de informação em um canal de
-                comunicação. Sua expressão é:</p>
+        <div class="mqam">
+            <h1>Modulações M-QAM (Modulação Quadratura de Amplitude):</h1>
+            <p>É um tipo de modulação de amplitude que utiliza múltiplos níveis de amplitude e fase para codificar os
+                bits de dados. </p>
+            <p>A informação é transmitida através da combinação de variações de amplitude e fase. </p>
+            <p>É utilizado em aplicações de comunicação digital, como televisão por cabo e satélite.</p>
             <div class="formula">
-                <p>C = B log<sub>2</sub>(1 + S/N<sub>0</sub>)</p>
+                <p><math>
+                    <mi>s</mi>
+                    <msub>
+                      <mrow>
+                        <mi>t</mi>
+                      </mrow>
+                    </msub>
+                    <mo>=</mo>
+                    <mi>A</mi>
+                    <mfenced>
+                      <mrow>
+                        <mi>cos</mi>
+                        <mfenced>
+                          <mrow>
+                            <mo>2</mo>
+                            <mi>π</mi>
+                            <mi>f</mi>
+                            <mi>c</mi>
+                            <mi>t</mi>
+                          </mrow>
+                        </mfenced>
+                        <mo>+</mo>
+                        <mi>j</mi>
+                        <mi>sin</mi>
+                        <mfenced>
+                          <mrow>
+                            <mo>2</mo>
+                            <mi>π</mi>
+                            <mi>f</mi>
+                            <mi>c</mi>
+                            <mi>t</mi>
+                          </mrow>
+                        </mfenced>
+                      </mrow>
+                    </mfenced>
+                  </math>
+                  </p>
             </div>
         </div>
     </div>
 
 
     <div class="right">
-        <!-- Shannon calculator -->
-        <div class="calculatorS">
-            <div class="S">
-                <h2>Calculadora da capacidade de Shannon</h2>
-                <!-- Input fields and submit button -->
-                <form action="" method="POST">
-                    {%csrf_token%}
-                    SNR (dB): <input type="text" id="shannon_snr"><br>
-                    B (MHz): <input type="text" id="shannon_b"><br>
-                    <button type="submit" style="color: white;" onclick="calculateShannon()">Calcular</button>
+        <div class="calculator">
+            <!-- Input fields and submit button -->
+            <div class="c">
+                <h2>Calculadora</h2>
+                <form>
+                    <label>Largura de banda (B) [MHz]: <input type="number" name="bandwidth"></label>
+                    <br>
+                    <label>Eb/No [dB]: <input type="number" name="Eb_No"></label>
+                    <br>
+                    <label>Taxa de erros máxima suportada (BER): <input type="number" step="any" name="BER"></label>
+                    <br>
+                    <button type="submit" style="color: white;">Calcular</button>
+                        
                 </form>
             </div>
 

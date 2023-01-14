@@ -43,6 +43,17 @@
                 </div>
                 <a href="{% url 'core:meios' %}" class="btn">Meios de transmissão</a>
                 <a href="{% url 'core:sinais' %}" class="btn">Sinais</a>
+                <div class="dropdown">
+                    <button class="dropbtn">
+                        Modulações
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="{% url 'core:modulacoes' %}">Teórica</a>
+                        <a href="{% url 'core:mpsk' %}">M-PSK</a>
+                        <a href="{% url 'core:mqam' %}">M-QAM</a></a>
+                    </div>
+                </div>
             </nav>
         </div>
 

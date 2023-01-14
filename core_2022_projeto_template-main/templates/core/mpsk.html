@@ -1,26 +1,15 @@
 {% extends "layout.html" %}
 
 <head>
-    <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        showProcessingMessages: false, //Close js loading process information
-        messageStyle: "none", //Do not display information
-        extensions: ["tex2jax.js"],
-        jax: ["input/TeX", "output/HTML-CSS"],
-        tex2jax: {
-            inlineMath:  [ ["$", "$"] ], //In-line formula selection$
-            displayMath: [ ["$$","$$"] ], //The formula selection in the paragraph$$
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'], //Avoid certain tags
-            ignoreClass:"comment-content", //Avoid tags containing the Class
-            processClass: "mathjax-latex",
-        },
-        "HTML-CSS": {
-            availableFonts: ["STIX","TeX"], //Optional font
-            showMathMenu: false //Close the right-click menu display
-        }
-    });
-    MathJax.Hub.Queue(["Typeset",MathJax.Hub])
-  </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    }
+  });
+</script>
     <script src="https://cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 
@@ -39,7 +28,7 @@
         color: black;
     }
 
-    .N {
+    .c {
         width: 100%;
         padding: 15px;
         background: #f0f0f5;
@@ -52,10 +41,11 @@
         margin-left: 10px;
     }
 
-    .nyquist {
+    .mpsk {
         margin-top: 60px;
         margin-right: 10px;
         color: white;
+        font-size: 20px;
     }
 
     .formula {
@@ -115,28 +105,61 @@
 
 <div>
     <div class="left">
-        <div class="nyquist">
-            <h1>Limite de Nyquist</h1>
-            <p>O limite de Nyquist é a frequência máxima que pode ser medida com precisão a partir de uma amostra de
-                dados. Sua expressão é:</p>
+        <div class="mpsk">
+            <h1>Modulações M-PSK (Modulação de Fase das Portadoras Senoidais):</h1>
+            <p>É um tipo de modulação de fase que utiliza diferentes posições de fase para codificar os bits de dados. </p>
+            <p>A informação é transmitida através da variação da fase do sinal portador. </p>
             <div class="formula">
-                <p>f<sub>Nyquist</sub> = f<sub>s</sub>/2</p>
+                <p><math>
+                    <mi>s</mi>
+                    <msub>
+                      <mrow>
+                        <mi>t</mi>
+                      </mrow>
+                    </msub>
+                    <mo>=</mo>
+                    <mi>A</mi>
+                    <mfenced>
+                      <mrow>
+                        <mi>cos</mi>
+                        <mfenced>
+                          <mrow>
+                            <mo>2</mo>
+                            <mi>π</mi>
+                            <mi>f</mi>
+                            <mi>c</mi>
+                            <mi>t</mi>
+                          </mrow>
+                        </mfenced>
+                        <mo>+</mo>
+                        <mi>2</mi>
+                        <mi>π</mi>
+                        <mi>n</mi>
+                        <mi>/</mi>
+                        <mi>m</mi>
+                        <mfenced>
+                      </mrow>
+                    </mfenced>
+                  </math></p>
             </div>
         </div>
     </div>
 
 
     <div class="right">
-        <!-- Nyquist calculator -->
-        <div class="calculatorN">
+        <div class="calculator">
             <!-- Input fields and submit button -->
-            <div class="N">
-                <h2>Calculadora do limite de Nyquist</h2>
-                <form action="" method="POST">
-                    {%csrf_token%}
-                    B (MHz): <input type="number" name="b" />
-                    V (número de níveis): <input type="number" name="v" />
+            <div class="c">
+                <h2>Calculadora</h2>
+                <form>
+                    <label>Largura de banda (B) [MHz]: <input type="number" name="bandwidth"></label>
+                    <br>
+                    <label>Eb/No [dB]: <input type="number" name="Eb_No"></label>
+                    <br>
+                    <label>Taxa de erros máxima suportada (BER): <input type="number" step="any" name="BER"></label>
+                    <br>
                     <button type="submit" style="color: white;">Calcular</button>
+                        
                 </form>
             </div>
 
