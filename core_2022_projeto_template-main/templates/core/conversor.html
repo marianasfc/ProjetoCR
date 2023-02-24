@@ -13,6 +13,7 @@
 
     body {
         font-family: Arial, Helvetica, sans-serif;
+        background: #f0f0f5; 
     }
 
     input {
@@ -21,11 +22,12 @@
 
     button{
         font: 400 18px Roboto, sans-serif;
-        background-color: #34495e;
+        background-color: rgb(247, 195, 54);
         border-radius: 5px;
         padding: 5px 10px;
         margin: 5px 2px;
         border: none;
+        
     }
 
     form input {
@@ -38,13 +40,16 @@
         border-radius: 8px;
     }
 
+    select{
+        border-radius: 8px;
+    }
+
     .conversor .titulo{
         width: 100%;
         margin: 15px auto;
         display: flex;
         justify-content: center;
         align-items: center;
-        color: white;
     }
 
     .conversor .form{
@@ -66,11 +71,10 @@
         display: flex;
         justify-content: center;
         align-items: center;  
-        color: white;
     }
 
     .conversor p {
-        color: white;
+        color: #151515;
         font-size: 20px;
         font-weight: 600;
     }
@@ -103,7 +107,7 @@
                         <option value="dBW">dBW</option>
                         <option value="mW">mW</option>
                     </select>
-                    <button type="submit" style="color: white;">Converter</button>
+                    <button type="submit">Converter</button>
                     
                 </form>
             </div>
@@ -112,6 +116,7 @@
                 <p>{{resultado}}</p>
             </div>
         </div>
+
 
     </body>
 

@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
-from .models import Topico, Conteudo, Conversor
-from .forms import TopicoForm, ConteudoForm, ConversorForm
-from .funcoes import calculateNyquist, calculateShannon, conversor, qam
+from .models import Topico, Conteudo, Conversor, Limite
+from .forms import TopicoForm, ConteudoForm, ConversorForm, LimiteForm
+from .funcoes import calculateNyquist, conversor
 
 # Create your views here.
 def index_view(request):
@@ -19,6 +19,18 @@ def topicos_view(request):
     return render(request, 'core/topicos.html', context)
 
 
+def calculateNyquist_view(request):
+    resultado = "Resultado"
+    if request.method == "POST":
+        b = request.POST['b']
+        v = request.POST['v']
+        resultado = calculateNyquist(b, v)
+    context = {
+        'resultado': resultado
+    }
+
+    return render(request, 'core/limite.html', context)
+
 def conversor_view(request):
     resultado = "Resultado"
     if request.method == "POST":
@@ -32,29 +44,9 @@ def conversor_view(request):
 
     return render(request, 'core/conversor.html', context)
 
-def nyquist_view(request):
-    resultado = "Resultado"
-    if request.method == "POST":
-        b = request.POST['b']
-        v = request.POST['v']
-        resultado = calculateNyquist(b, v)
-    context = {
-        'resultado': resultado
-    }
-
-    return render(request, 'core/nyquist.html', context)
-
-def shannon_view(request):
-    resultado = "Resultado"
-    if request.method == "POST":
-        b = request.POST['b']
-        snr = request.POST['snr']
-        resultado = calculateShannon(b, snr)
-    context = {
-        'resultado': resultado
-    }
-
-    return render(request, 'core/shannon.html', context)
+def limite_view(request):
+    
+    return render(request, 'core/limite.html')
 
 
 def edita_topicos_view(request):
@@ -124,29 +116,3 @@ def apaga_conteudo_view(request, conteudo_id):
     conteudo = Conteudo.objects.get(id=conteudo_id)
     conteudo.delete()
     return redirect('core:edita_topicos')
-
-def meios_view(request):
-    return render(request, 'core/meios.html')
-
-def sinais_view(request):
-    return render(request, 'core/sinais.html')
-
-def mpsk_view(request):
-    
-
-    return render(request, 'core/mpsk.html')
-
-def mqam_view(request):
-    resultado = "Resultado"
-    if request.method == "POST":
-        b = request.POST['b']
-        db = request.POST['db']
-        ber = request.POST['ber']
-        resultado = qam(b, db, ber)
-    context = {
-        'resultado': resultado
-    }
-    return render(request, 'core/mqam.html', context)
-
-def modulacoes_view(request):
-    return render(request, 'core/modulacoes.html')

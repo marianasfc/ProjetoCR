@@ -2,32 +2,27 @@ body {
     height: 100vh;
     display: grid;
     grid-template-rows: 20vh 1fr 7vh;
-    background-color: #34495e;
+    background: #34495e;
+    font: normal 300 18px "Roboto", sans-serif;
 }
 
 header {
-    background-color: rgb(211, 211, 211);
+    background-color: #b3d9ff;
     display: flex;
     flex-direction: row;
-    justify-content: left;
+    justify-content: space-between;
     align-items: center;
     gap: 5px;
+    padding: 5vh;
 }
 
-.menu{
-    margin-left: 200px;
-    justify-content: right;
+header.h1{
+    font-style: Arial, Helvetica, sans-serif;
 }
 
 
-
-nav{
-    display: flex;
-    flex-direction: row;
-}
-
-nav a{
-    display: block;
+main {
+    padding: 5vw;
 }
 
 footer{
@@ -35,24 +30,6 @@ footer{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 5ch;
-    padding: 5vw;
-}
-
-main>div{
-    width: 100%;
-}
-
-.blocomain{
-    display: flex;
-    flex-direction: row;
 }
 
 div#novos {
@@ -63,7 +40,6 @@ div#novos {
     gap: 5ch;
 }
 
-
 div.botoes {
     width:100%;
     display: flex;
@@ -72,80 +48,26 @@ div.botoes {
     margin-top: 2ch;
 }
 
-
 div.conteudo, h5 {
     min-width: 50vw;
     list-style-type: none;
     background-color: whitesmoke;
     padding: 0.5ch 1ch;
     margin-bottom: 1ch;
-    display: flex; 
+    display: flex;
+    
     justify-content: space-between; 
+}
+
+div.left{
+    float: left;
+      width: 50%;
+      text-align: center;
 }
 
 h5 {
     margin-top: 3ch;
 }
 
-a .btn{
-    background-color: #34495e;
-}
-
-.duascolunas{
-    display: flex;
-    flex-direction: row;
-
-}
-
-.dropdown {
-    float: left;
-    /* overflow: hidden; */
-    z-index: 1;
-  }
-  
-  .dropdown .dropbtn {
-    font-size: 16px;  
-    border: none;
-    outline: none;
-    color: white;
-    padding: 14px 16px;
-    background-color: inherit;
-    font-family: inherit;
-    margin: 0;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  .dropdown-content a {
-    float: none;
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
-  
-  nav a:hover, .dropdown:hover .dropbtn {
-    background-color: #34495e;
-    color: white; 
-  }
-  
-  .dropdown-content a:hover {
-    background-color: #ddd;
-  }
-  
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
 
 
-/* *{
-    border: 1px solid black;
-} */
